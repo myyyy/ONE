@@ -57,7 +57,6 @@ if __name__=='__main__':
     timeArray = time.localtime(int(time.time()))
     now = datetime.date.today()
     days = now -start
-    print days
     for i in range(1,days.days):
         write_file(i)
     push_data()
