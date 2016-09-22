@@ -74,6 +74,5 @@ if __name__=='__main__':
     for i in range(begin,days.days):
         begin = i
         write_img_file(i)
-    print begin
     write_pkl(begin)
     push_data()
