@@ -32,9 +32,9 @@ def get_img_data(url):
         return imgUrl,titulo,title
     except:
         pass
-if __name__=='__main__':
+def push_code(num):
     pool = Pool(4)
-    url = get_url(30, 'one')
+    url = get_url(num, 'one')
     imgUrl,titulo,title = get_img_data(url)
     file = open('ONE-IMG\[ONE]-'+titulo+'.md', 'w')
     file.write('![one]('+imgUrl+')'+'\n')
@@ -44,3 +44,5 @@ if __name__=='__main__':
     os.system('git add -A')
     os.system('git commit -m "test"')
     os.system('git push origin master')
+if __name__=='__main__':
+    push_code(23)
