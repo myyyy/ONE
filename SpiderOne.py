@@ -28,26 +28,32 @@ def get_img_data(url):
         return imgUrl,titulo,title
     except:
         pass
-def push_code(num):
-    pool = Pool(4)
+def write_file(num):
+
     url = get_url(num, 'one')
-    imgUrl,titulo,title = get_img_data(url)
     try:
+        imgUrl,titulo,title = get_img_data(url)
         file = open('ONE-IMG\[ONE]-'+titulo+'.md', 'w')
         file.write('![one]('+imgUrl+')'+'\n')
         file.write('#'+titulo+'\n')
         file.write(title)
         file.close()
+    except:
+        pass
+def push_data():
+    try:
         os.system('git add -A')
         os.system('git commit -m "test"')
         os.system('git push origin master')
     except:
         pass
 if __name__=='__main__':
+    pool = Pool(4)
     start = datetime.date(2012,10,1)
     timeArray = time.localtime(int(time.time()))
     now = datetime.date(timeArray.tm_year,timeArray.tm_mon,timeArray.tm_mday)
     days = now -start
-    for i in range(16,days.days):
-        push_code(i)
+    for i in range(1,days.days):
+        write_file(i)
+    push_data()
     
