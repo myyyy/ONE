@@ -9,6 +9,7 @@ from multiprocessing import Pool
 import requests
 import bs4
 import os
+import pickle
 root_url = 'http://wufazhuce.com'
 todaytime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 def save_img():
@@ -29,7 +30,7 @@ def get_img_data(url):
         return imgUrl,titulo,title
     except:
         pass
-def write_file(num):
+def write_img_file(num):
 
     url = get_url(num, 'one')
     try:
@@ -51,13 +52,27 @@ def push_data():
         gitcommit = 'git commit -m "'+todaytime+'"'
         gitpush =  'git push origin master'
         os.system(gitadd+' && '+gitcommit+' && ' +gitpush)
+def write_pkl(begin):
+    output = open('data.pkl', 'wb')
+    pickle.dump(begin,output)
+    output.close()
+def read_pkl():
+    data = 1
+    try:
+        pkl_file = open('data.pkl', 'rb')
+        data = pickle.load(pkl_file)
+    except:
+        pass
+    return data
 if __name__=='__main__':
     pool = Pool(4)
     start = datetime.date(2012,9,15)
     timeArray = time.localtime(int(time.time()))
     now = datetime.date.today()
     days = now -start
-    for i in range(1,days.days):
-        write_file(i)
+    begin = read_pkl()
+    for i in range(begin,days.days):
+        begin = i
+        write_img_file(i)
+    write_pkl(begin)
     push_data()
-    
