@@ -47,7 +47,6 @@ def write_file(num):
         pass
 def push_data():
     try:
-        print todaytime
         os.system('git add -A')
         os.system('git commit -m "'+todaytime+'"')
         os.system('git push origin master')
