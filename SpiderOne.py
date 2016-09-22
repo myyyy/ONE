@@ -33,11 +33,15 @@ def write_file(num):
     url = get_url(num, 'one')
     try:
         imgUrl,titulo,title = get_img_data(url)
-        file = open('ONE-IMG\\'+titulo+'.md', 'w')
-        file.write('![one]('+imgUrl+')'+'\n')
-        file.write('#'+titulo+'\n')
-        file.write(title)
-        file.close()
+        filename = 'ONE-IMG\\'+titulo+'.md'
+        if os.path.exists(filename):
+            print filename+'file exists'
+        else:
+            file = open(filename, 'w')
+            file.write('![one]('+imgUrl+')'+'\n')
+            file.write('#'+titulo+'\n')
+            file.write(title)
+            file.close()
     except:
         pass
 def push_data():
@@ -48,12 +52,13 @@ def push_data():
     except:
         pass
 if __name__=='__main__':
-#     pool = Pool(4)
-#     start = datetime.date(2012,10,1)
-#     timeArray = time.localtime(int(time.time()))
-#     now = datetime.date(timeArray.tm_year,timeArray.tm_mon,timeArray.tm_mday)
-#     days = now -start
-#     for i in range(1,days.days):
-#         write_file(i)
+    pool = Pool(4)
+    start = datetime.date(2012,10,1)
+    timeArray = time.localtime(int(time.time()))
+    now = datetime.date(timeArray.tm_year,timeArray.tm_mon,timeArray.tm_mday)
+    days = now -start
+    print days
+    for i in range(1,days.days):
+        write_file(i)
     push_data()
     
