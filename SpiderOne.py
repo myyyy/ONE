@@ -51,7 +51,7 @@ def push_data():
         gitpush =  'git push origin master'
         os.system(gitadd+' && '+gitcommit+' && ' +gitpush)
 if __name__=='__main__':
-#     pool = Pool(4)
+    pool = Pool(4)
 #     start = datetime.date(2012,10,1)
 #     timeArray = time.localtime(int(time.time()))
 #     now = datetime.date.today()
