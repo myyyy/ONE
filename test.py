@@ -1,6 +1,6 @@
 import requests
 import bs4
-root_url = 'http://wufazhuce.com/article/1536'
+root_url = 'http://wufazhuce.com/article/1535'
 response = requests.get(root_url)
 soup = bs4.BeautifulSoup(response.text,"html.parser")
 
@@ -12,15 +12,12 @@ for i in soup.select('.articulo-titulo'):
 for i in soup.select('.articulo-autor'):
     autor = i.get_text().strip()
 for i in soup.select('.articulo-contenido'):
-    contenido = i.get_text().strip()
-print cerrar
+    contenido = i.get_text()
 print titulo
-print autor
-print contenido
-filename = 'ONE-ARTICLE\\'+titulo+'.md'
-file = open('test.md', 'w')
+filename = 'ONE-ESSAY\\'+titulo+'.md'
+file = open(filename, 'w')
 file.write('> '+cerrar+'\n\n')
 file.write('###'+titulo+'\n')
-file.write('####'+autor+'\n')
+file.write('####'+autor+'\n\n')
 file.write(contenido)
 file.close()

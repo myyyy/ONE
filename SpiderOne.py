@@ -42,15 +42,16 @@ def get_article_data(url):
         for i in soup.select('.articulo-autor'):
             autor = i.get_text().strip()
         for i in soup.select('.articulo-contenido'):
-            contenido = i.get_text().strip()
+            contenido = i.get_text()
         return cerrar,titulo,autor,contenido
     except:
         pass
 def write_article_file(num):
     url = get_url(num, 'article')
+    print url
     try:
         cerrar,titulo,autor,contenido = get_article_data(url)
-        filename = 'ONE-ARTICLE\\'+titulo+'.md'
+        filename = 'ONE-ESSAY\\'+titulo+'.md'
         file = open(filename, 'w')
         file.write('> '+cerrar+'\n\n')
         file.write('###'+titulo+'\n')
@@ -64,7 +65,7 @@ def write_img_file(num):
     url = get_url(num, 'one')
     try:
         imgUrl,titulo,title = get_img_data(url)
-        filename = 'ONE-IMG\\'+titulo+'.md'
+        filename = 'ONE-ESSAY\\'+titulo+'.md'
         file = open(filename, 'w')
         file.write('![one]('+imgUrl+')'+'\n')
         file.write('#'+titulo+'\n')
