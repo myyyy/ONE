@@ -47,7 +47,7 @@ def write_file(num):
         pass
 def push_data():
         commit = 'git commit -m "'+todaytime+'"'
-        os.system('git add -A && '+commit+' && git push')
+        os.system('git add -A && '+commit+' && git push origin master')
 #         os.system('git commit -m "'+todaytime+'"')
 #         os.system('git push origin master')
 if __name__=='__main__':
