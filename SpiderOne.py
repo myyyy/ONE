@@ -48,12 +48,12 @@ def push_data():
     except:
         pass
 if __name__=='__main__':
-    pool = Pool(4)
-    start = datetime.date(2012,10,1)
-    timeArray = time.localtime(int(time.time()))
-    now = datetime.date(timeArray.tm_year,timeArray.tm_mon,timeArray.tm_mday)
-    days = now -start
-    for i in range(1,days.days):
-        write_file(i)
+#     pool = Pool(4)
+#     start = datetime.date(2012,10,1)
+#     timeArray = time.localtime(int(time.time()))
+#     now = datetime.date(timeArray.tm_year,timeArray.tm_mon,timeArray.tm_mday)
+#     days = now -start
+#     for i in range(1,days.days):
+#         write_file(i)
     push_data()
     
