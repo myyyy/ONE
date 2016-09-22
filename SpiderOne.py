@@ -45,6 +45,7 @@ def write_file(num):
             file.close()
     except:
         pass
+
 def push_data():
         gitadd = 'git add -A'
         gitcommit = 'git commit -m "'+todaytime+'"'
