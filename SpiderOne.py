@@ -36,13 +36,16 @@ def push_code(num):
     pool = Pool(4)
     url = get_url(num, 'one')
     imgUrl,titulo,title = get_img_data(url)
-    file = open('ONE-IMG\[ONE]-'+titulo+'.md', 'w')
-    file.write('![one]('+imgUrl+')'+'\n')
-    file.write('#'+titulo+'\n')
-    file.write(title)
-    file.close()
-    os.system('git add -A')
-    os.system('git commit -m "test"')
-    os.system('git push origin master')
+    try:
+        file = open('ONE-IMG\[ONE]-'+titulo+'.md', 'w')
+        file.write('![one]('+imgUrl+')'+'\n')
+        file.write('#'+titulo+'\n')
+        file.write(title)
+        file.close()
+        os.system('git add -A')
+        os.system('git commit -m "test"')
+        os.system('git push origin master')
+    except:
+        pass
 if __name__=='__main__':
     push_code(23)
