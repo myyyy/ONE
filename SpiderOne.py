@@ -10,6 +10,7 @@ import requests
 import bs4
 import os
 root_url = 'http://wufazhuce.com'
+todaytime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 def save_img():
     pass
 def get_url(num,string):
@@ -46,19 +47,20 @@ def write_file(num):
         pass
 def push_data():
     try:
+        print todaytime
         os.system('git add -A')
-        os.system('git commit -m "test"')
+        os.system('git commit -m "'+todaytime+'"')
         os.system('git push origin master')
     except:
         pass
 if __name__=='__main__':
-    pool = Pool(4)
-    start = datetime.date(2012,10,1)
-    timeArray = time.localtime(int(time.time()))
-    now = datetime.date(timeArray.tm_year,timeArray.tm_mon,timeArray.tm_mday)
-    days = now -start
-    print days
-    for i in range(1,days.days):
-        write_file(i)
+#     pool = Pool(4)
+#     start = datetime.date(2012,10,1)
+#     timeArray = time.localtime(int(time.time()))
+#     now = datetime.date.today()
+#     days = now -start
+#     print days
+#     for i in range(1,days.days):
+#         write_file(i)
     push_data()
     
