@@ -3,8 +3,8 @@
 Created on 2016��9��18��
 @author: su
 '''
-import argparse
-import re
+import time
+import datetime
 from multiprocessing import Pool
 import requests
 import bs4
@@ -25,10 +25,6 @@ def get_img_data(url):
         for i in soup.select('.one-titulo'):
             titulo = i.get_text().strip()
         imgUrl = soup.find_all('img')[1]['src']
-        
-        print imgUrl
-        print titulo
-        print title
         return imgUrl,titulo,title
     except:
         pass
@@ -48,4 +44,10 @@ def push_code(num):
     except:
         pass
 if __name__=='__main__':
-    push_code(23)
+    start = datetime.date(2012,10,1)
+    timeArray = time.localtime(int(time.time()))
+    now = datetime.date(timeArray.tm_year,timeArray.tm_mon,timeArray.tm_mday)
+    days = now -start
+    for i in range(16,days.days):
+        push_code(i)
+    
