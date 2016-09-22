@@ -53,7 +53,7 @@ def push_data():
         os.system(gitadd+' && '+gitcommit+' && ' +gitpush)
 if __name__=='__main__':
     pool = Pool(4)
-    start = datetime.date(2012,9,16)
+    start = datetime.date(2012,9,15)
     timeArray = time.localtime(int(time.time()))
     now = datetime.date.today()
     days = now -start
