@@ -33,7 +33,7 @@ def write_file(num):
     url = get_url(num, 'one')
     try:
         imgUrl,titulo,title = get_img_data(url)
-        file = open('ONE-IMG\[ONE]-'+titulo+'.md', 'w')
+        file = open('ONE-IMG\\'+'[ONE]-'+titulo+'.md', 'w')
         file.write('![one]('+imgUrl+')'+'\n')
         file.write('#'+titulo+'\n')
         file.write(title)
