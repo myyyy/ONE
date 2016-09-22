@@ -46,12 +46,9 @@ def write_file(num):
     except:
         pass
 def push_data():
-    try:
         os.system('git add -A')
         os.system('git commit -m "'+todaytime+'"')
         os.system('git push origin master')
-    except:
-        pass
 if __name__=='__main__':
 #     pool = Pool(4)
 #     start = datetime.date(2012,10,1)
