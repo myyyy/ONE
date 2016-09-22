@@ -36,14 +36,11 @@ def write_img_file(num):
     try:
         imgUrl,titulo,title = get_img_data(url)
         filename = 'ONE-IMG\\'+titulo+'.md'
-        if os.path.exists(filename):
-            pass
-        else:
-            file = open(filename, 'w')
-            file.write('![one]('+imgUrl+')'+'\n')
-            file.write('#'+titulo+'\n')
-            file.write(title)
-            file.close()
+        file = open(filename, 'w')
+        file.write('![one]('+imgUrl+')'+'\n')
+        file.write('#'+titulo+'\n')
+        file.write(title)
+        file.close()
     except:
         pass
 

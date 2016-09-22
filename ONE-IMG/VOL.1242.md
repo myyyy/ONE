@@ -1,3 +1,3 @@
-![one](http://image.wufazhuce.com/FkvZG5f5BiYBh2RNJZmbaZA9veaF)
+![one](http://image.wufazhuce.com/FsQmzyVAQ_P4N4B9ckLTyHU2IrSJ)
 #VOL.1242
-现在想想，最美妙的时刻不是热恋，而是有人忽然闯进你心里的那一瞬间。仿佛拥有了新的世界，叫人相信所有的剧本都是为你我而写。 by 蒋话
+我们似乎总会在某一年，爆发性地长大，爆发性地觉悟，爆发性地知道某个真相，让原本没有什么意义的时间的刻度，成了一道分界线。 from 《老灵魂》
