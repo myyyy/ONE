@@ -1,14 +1,23 @@
-# -*- coding: utf-8 -*-
-'''
-Created on 2016��9��22��
-@author: su
-'''
-import time
-import datetime
-timeArray = time.localtime(int(time.time()))
-otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
-start = datetime.date(2012,10,16)
-timeArray = time.localtime(int(time.time()))
-now = datetime.date(timeArray.tm_year,timeArray.tm_mon,timeArray.tm_mday)
-days = now-start
-print days.days
+import pickle
+
+data1 = 1234
+
+output = open('data.pkl', 'wb')
+
+# Pickle dictionary using protocol 0.
+pickle.dump(data1, output)
+
+output.close()
+
+import pprint, pickle
+
+pkl_file = open('data.pkl', 'rb')
+
+data1 = pickle.load(pkl_file)
+print type(data1)
+# 
+# data2 = pickle.load(pkl_file)
+# print data2
+# pprint.pprint(data2)
+# 
+# pkl_file.close()
