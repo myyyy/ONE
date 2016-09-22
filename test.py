@@ -1,6 +1,6 @@
 import requests
 import bs4
-root_url = 'http://wufazhuce.com/article/1535'
+root_url = 'http://wufazhuce.com/article/20'
 response = requests.get(root_url)
 soup = bs4.BeautifulSoup(response.text,"html.parser")
 
