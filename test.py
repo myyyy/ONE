@@ -1,6 +1,6 @@
 import pickle
 
-data1 = 1234
+data1 = 1232
 
 output = open('data.pkl', 'wb')
 
