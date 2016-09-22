@@ -3,6 +3,7 @@
 Created on 2016��9��18��
 @author: su
 '''
+#git config core.autocrlf false
 import time
 import datetime
 from multiprocessing import Pool
@@ -28,6 +29,34 @@ def get_img_data(url):
             titulo = i.get_text().strip()
         imgUrl = soup.find_all('img')[1]['src']
         return imgUrl,titulo,title
+    except:
+        pass
+def get_article_data(url):
+    try:
+        response = requests.get(url)
+        soup = bs4.BeautifulSoup(response.text,"html.parser")
+        for i in soup.select('.comilla-cerrar'):
+            cerrar = i.get_text().strip()
+        for i in soup.select('.articulo-titulo'):
+            titulo = i.get_text().strip()
+        for i in soup.select('.articulo-autor'):
+            autor = i.get_text().strip()
+        for i in soup.select('.articulo-contenido'):
+            contenido = i.get_text().strip()
+        return cerrar,titulo,autor,contenido
+    except:
+        pass
+def write_article_file(num):
+    url = get_url(num, 'article')
+    try:
+        cerrar,titulo,autor,contenido = get_article_data(url)
+        filename = 'ONE-ARTICLE\\'+titulo+'.md'
+        file = open(filename, 'w')
+        file.write('> '+cerrar+'\n\n')
+        file.write('###'+titulo+'\n')
+        file.write('####'+autor+'\n')
+        file.write(contenido)
+        file.close()
     except:
         pass
 def write_img_file(num):
@@ -71,5 +100,6 @@ if __name__=='__main__':
     for i in range(begin,days.days):
         begin = i
         write_img_file(i)
+        write_article_file(i)
     write_pkl(begin)
     push_data()

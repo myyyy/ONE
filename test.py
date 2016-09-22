@@ -1,23 +1,26 @@
-import pickle
+import requests
+import bs4
+root_url = 'http://wufazhuce.com/article/1536'
+response = requests.get(root_url)
+soup = bs4.BeautifulSoup(response.text,"html.parser")
 
-data1 = 1232
+for i in soup.select('.comilla-cerrar'):
+    cerrar = i.get_text().strip()
+for i in soup.select('.articulo-titulo'):
+    titulo = i.get_text().strip()
 
-output = open('data.pkl', 'wb')
-
-# Pickle dictionary using protocol 0.
-pickle.dump(data1, output)
-
-output.close()
-
-import pprint, pickle
-
-pkl_file = open('data.pkl', 'rb')
-
-data1 = pickle.load(pkl_file)
-print type(data1)
-# 
-# data2 = pickle.load(pkl_file)
-# print data2
-# pprint.pprint(data2)
-# 
-# pkl_file.close()
+for i in soup.select('.articulo-autor'):
+    autor = i.get_text().strip()
+for i in soup.select('.articulo-contenido'):
+    contenido = i.get_text().strip()
+print cerrar
+print titulo
+print autor
+print contenido
+filename = 'ONE-ARTICLE\\'+titulo+'.md'
+file = open('test.md', 'w')
+file.write('> '+cerrar+'\n\n')
+file.write('###'+titulo+'\n')
+file.write('####'+autor+'\n')
+file.write(contenido)
+file.close()
